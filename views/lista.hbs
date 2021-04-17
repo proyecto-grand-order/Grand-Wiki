@@ -1,0 +1,43 @@
+<div class="container">
+    <h3>Servants</h3>
+    <div class="row">
+        <div class="col">
+                <input class="form-control" id="ServantSearch" type="text" placeholder="Altria Pendragon">
+        </div>
+        <div class="col">
+            <div id="selector">
+                {{#each clases}}
+                    <img class="ImageSelector" height="35px" id="clase-{{@key}}" src="{{this}}" alt="clases">
+                {{/each}}
+            </div>
+        </div>
+    </div>
+        <div style="position:relative; z-index: 1; overflow-y: hidden" id="viewportListScroll">
+        <table id="TableServantList" class="responsive-table centered">
+            <thead id="headServantList" style="position: relative; z-index: 2; color: white; background-color: #7289DA; filter: drop-shadow(0px 2px 2px black);">
+                <tr>
+                    <th style="border-radius: 0;">Id</th>
+                    <th style="border-radius: 0;">Rareza</th>
+                    <th style="border-radius: 0;">Nombre</th>
+                    <th style="border-radius: 0;">Clase</th>
+                    <th style="border-radius: 0; height: 90px;">Imagen</th>
+                </tr>
+            </thead>
+            <tbody id="ServantList">
+                {{#each list}}
+                <tr id="ServantInList">
+                    <td>{{this.id}}</td>
+                    <td>{{this.rarity}}</td>
+                    <td><a href="/servant/{{this.id}}">{{this.name}}</a> <span style="display:none">{{this.head.className}}</span></td>
+                    <td><img height="40px" src="{{this.class}}" alt="{{this.class}}"></td>
+                    <td>{{{this.head.img}}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red" id="ToUp" style="display: none;">
+                <i class="large material-icons" onclick="toTop()">arrow_upward</i>
+            </a>
+        </div>
+</div>

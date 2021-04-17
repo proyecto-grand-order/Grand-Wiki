@@ -1,0 +1,109 @@
+<div id="viewport-tabs">
+    <ul class="tabs" id="skillTabs"
+        style="filter:drop-shadow(0px 0px 1px black); margin-top: -2px; margin-bottom: 50px;">
+        {{#each skills}}
+        <li class="tab col s3"><a href="#skill{{@key}}">{{this.details.original.name}}</a></li>
+        {{/each}}
+    </ul>
+</div>
+
+{{#each skills}}
+<div class="container">
+    <div id="skill{{@key}}" class="col s12">
+        {{{this.alert}}}
+        <div class="row" style="margin: 15px 0px 0px;">
+            <div class="col">
+                <img id="imageSkill" src="{{this.details.icon}}">
+            </div>
+            <div class="col s10">
+                {{#if this.details.original.name}}
+                <span id="originaNameSkill">[{{this.details.original.name}}]</span>
+                {{/if}}
+                <p style="margin-top: 0;"><span style="line-height: 1;font-size: xx-large;">{{this.details.name}}</span>
+                    <span id="otherSkill" style="float: right;">Cooldown: <b>{{this.details.cooldown.[0]}} /
+                            {{this.details.cooldown.[5]}} / {{this.details.cooldown.[9]}}</b><br>El cooldown baja un
+                        turno en el nivel 6 y 10</span>
+                    <hr>
+                    <span>{{this.details.desc}}</span>
+                </p>
+            </div>
+        </div>
+        <div class="card-panel teal" id="alertaSkill" style="display: none;">
+            <span class="white-text">Desliza la tabla a la derecha para ver mas informacion
+            </span>
+        </div>
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Efectos</th>
+                    <th>Lv.1</th>
+                    <th>Lv.2</th>
+                    <th>Lv.3</th>
+                    <th>Lv.4</th>
+                    <th>Lv.5</th>
+                    <th>Lv.6</th>
+                    <th>Lv.7</th>
+                    <th>Lv.8</th>
+                    <th>Lv.9</th>
+                    <th>Lv.10</th>
+                </tr>
+            </thead>
+            <tb>
+                {{#each this.funcs}}
+                <tr>
+                    <td>{{{this}}}</td>
+                </tr>
+                {{/each}}
+            </tb>
+        </table>
+        {{#each this.Reference}}
+        {{{this}}}
+        {{/each}}
+        {{#each this.other}}
+        {{{this.alert}}}
+        <div class="row" style="margin: 15px 0px 0px;">
+            <div class="col">
+                <img id="imageSkill" src="{{this.skill.icon}}">
+            </div>
+            <div class="col s10">
+                <p><span style="font-size: xx-large;">{{this.skill.name}}</span>
+                    <span id="otherSkill" style="float: right;">Cooldown: <b>{{this.skill.cooldown.[0]}} /
+                            {{this.skill.cooldown.[5]}} / {{this.skill.cooldown.[9]}}</b><br>El cooldown baja un
+                        turno en el nivel 6 y 10</span>
+                    <hr>
+                    <span>{{this.details.desc}}</span>
+                </p>
+            </div>
+        </div>
+        <div class="card-panel teal" id="alertaSkill" style="display: none;">
+            <span class="white-text">Desliza la tabla a la derecha para ver mas informacion
+            </span>
+        </div>
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Efectos</th>
+                    <th>Lv.1</th>
+                    <th>Lv.2</th>
+                    <th>Lv.3</th>
+                    <th>Lv.4</th>
+                    <th>Lv.5</th>
+                    <th>Lv.6</th>
+                    <th>Lv.7</th>
+                    <th>Lv.8</th>
+                    <th>Lv.9</th>
+                    <th>Lv.10</th>
+                </tr>
+            </thead>
+            <tb>
+                {{#each this.funcs}}
+                <tr>
+                    <td>{{{this}}}</td>
+                </tr>
+                {{/each}}
+            </tb>
+        </table>
+        {{/each}}
+    </div>
+</div>
+{{/each}}

@@ -1,0 +1,20 @@
+<div style="display: none;" id="page">
+    {{> servant/MainTabs }}
+</div>
+<div id="preload">
+    <img src="{{> loader/icon }}">
+    <span id="textLoader" style="display: none;"></span>
+</div>
+<input type="text" value="{{ascension}}" id="ascension" hidden>
+<script src="/js/service/preloadImage.js"></script>
+<script>
+    const ImagesDataInput = document.getElementById('ascension');
+    const ImagesDataToString = ImagesDataInput.value
+    const ImagesDataToArray = ImagesDataToString.split(',');
+    var isLoaded = false;
+
+    window.onload = preloadImages(ImagesDataToArray, async () => {
+        $('#preload').fadeOut(1000)
+        $('#page').fadeIn(2000)
+    })
+</script>

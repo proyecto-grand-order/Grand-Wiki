@@ -1,0 +1,326 @@
+    .splide__arrow {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        content: url(https://apps.atlasacademy.io/db/assets/img_arrow_load.png);
+        width: 2em;
+        height: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        border: none;
+        padding: 0;
+        background: #d2691e00;
+    }
+    
+    .splide__arrow--prev {
+        left: 1em;
+        transform: rotate( 180deg);
+    }
+    
+    .splide__arrow--next {
+        right: 1em;
+        transform: rotate( 0deg);
+        margin-top: -5px;
+    }
+    
+    button:focus {
+        outline: none;
+        background-color: transparent;
+    }
+    
+    .nav-wrapper .input-field input[type=search] {
+        padding-left: 1rem;
+        width: calc(100% - 1rem)
+    }
+    /* Command Card */
+    
+    .command-card {
+        display: inline-block;
+        height: 1em;
+        position: relative;
+        padding: 30px;
+    }
+    
+    command-card-ratio {
+        height: 100%;
+    }
+    
+    .command-card-bg,
+    .command-card-icon,
+    .command-card-portrait,
+    .command-card-text-card,
+    .command-card-text-np {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+    
+    .command-card-bg {
+        /**
+            (170 - 130) / 170 / 2
+            40 / 340
+        **/
+        left: calc(40% / 3.40);
+    }
+    
+    .command-card-icon {
+        /**
+            133 / 185
+         */
+        height: calc(calc(133% / 1.85) - 10%);
+        left: 10%;
+        /**
+            (185 - 133) / 185
+            52 / 185
+         */
+        top: calc(calc(52% / 1.85) + 20%);
+        z-index: 1;
+    }
+    
+    .command-card-text-card {
+        /**
+            73 / 150
+         */
+        height: calc(calc(73% / 1.50) - 10%);
+        left: 10%;
+        /**
+            (150 - 73) / 150
+            77 / 150
+         */
+        top: calc(calc(77% / 1.50) + 8.5%);
+        z-index: 2;
+    }
+    
+    .command-card-text-np {
+        height: 50%;
+        left: 0;
+        overflow: hidden;
+        top: 50%;
+        width: 100%;
+        z-index: 2;
+    }
+    
+    .command-card-text-np>img {
+        display: block;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    
+    .command-card-text-np.bottom>img {
+        top: -100%;
+    }
+    /* Tabs */
+    
+    .tabs .indicator {
+        background-color: #7289DA;
+    }
+    
+    .tabs .tab a:hover,
+    .tabs .tab a.active {
+        color: #7289DA;
+    }
+    
+    .tabs .tab a {
+        color: #7289DA;
+    }
+    
+    .tabs .tab:hover {
+        transition: all ease 0.5s;
+        background-color: #7289da2e;
+    }
+    
+    .tabs .tab:focus {
+        background-color: #7289DA;
+    }
+    
+    #preload {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    #logoProyecto {
+        background-color: white;
+        padding: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        filter: drop-shadow(0px 2px 3px black);
+        margin-top: -25px;
+    }
+    
+    #imageSkill {
+        filter: drop-shadow(0px 0px 2px black)
+    }
+    
+    #arrowReference {
+        position: relative;
+        font-size: 30px;
+        vertical-align: -2px;
+        margin: 0;
+    }
+    
+    #originaNameSkill {
+        font-size: large;
+        color: cornflowerblue;
+    }
+    
+    #servantBox {
+        margin-left: -150px;
+        margin-right: -250px;
+        position: absolute;
+        height: 670px;
+        margin-top: -420px;
+        object-fit: cover;
+        padding-bottom: 250px;
+        width: 300px;
+        object-position: 0px 0px;
+    }
+    /* Box V2 */
+    
+    .heading-frame {
+        display: grid;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+        grid-template-columns: -webkit-max-content auto;
+        grid-template-columns: max-content auto;
+        grid-template-rows: auto -webkit-max-content;
+        grid-template-rows: auto max-content;
+        background-size: cover;
+        color: white;
+        width: 280px;
+        height: 400px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    
+    .heading-frame:before,
+    .heading-frame:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 1px solid white;
+        filter: drop-shadow(0px 0px 2px black);
+    }
+    
+    .heading-frame:before {
+        grid-row: 1/2;
+        border-right: none;
+        border-bottom: none;
+    }
+    
+    .heading-frame:after {
+        grid-row: 1/span 2;
+        border-left: none;
+    }
+    
+    .heading-frame h2 {
+        margin: 1rem 1rem -0.5rem 0;
+        font-family: "Pragati Narrow", sans-serif;
+        font-size: 2rem;
+        filter: drop-shadow(2px 1px 2px black);
+        text-shadow: #ffd700 0px 0px 5px, #ffd700 0px 0px 10px, #fff 0px 0px 15px, #ffd700 0px 0px 20px, #ffd700 0px 0px 30px, #ffd700 0px 0px 40px, #ffd700 0px 0px 50px, #ffd700 0px 0px 75px;
+        max-width: 100%;
+    }
+    /* Lightbox */
+    
+    .lightbox .lb-image {
+        border: 0px
+    }
+    
+    .lb-nav a.lb-next {
+        background: url(https://apps.atlasacademy.io/db/assets/img_arrow_load.png) right 48% no-repeat;
+        background-size: 50px 50px;
+    }
+    
+    .lb-nav a.lb-prev {
+        background: url(https://apps.atlasacademy.io/db/assets/img_arrow_load.png) left 48% no-repeat;
+        background-size: 50px 50px;
+        transform: rotate( 180deg);
+        background-position: 100%;
+    }
+    /*Scrollbar*/
+    
+    #skillTabs {
+        overflow-x: hidden;
+    }
+    
+    .splide__track {
+        border-bottom: 10px !important;
+    }
+
+
+    #HeadTable {
+        height: 150px;
+    }
+
+    .ImageSelector {
+        filter: grayscale(1);
+        transition: all ease 0.3s;
+    }
+    .ImageSelector:hover {
+        cursor: pointer;
+    }
+
+    #ServantList tr {
+        cursor: move;
+        border-left: 15px solid #7289DA
+    }
+    
+    #ToUp {
+        transition: all ease 0.4s
+    }
+
+    @media only screen and (max-device-width: 640px) {
+        #HeadTable {
+            height: 50px;
+        }
+        
+        #arrowReference {
+            font-size: 0;
+        }
+        #arrowReference::before {
+            content: '|';
+            font-size: 20px;
+            color: transparent;
+            border-left: 1px solid black;
+            margin-right: 10px;
+            margin-left: -10px;
+            filter: drop-shadow(-2px 0px 1px black);
+        }
+        #logoProyecto {
+            display: none;
+        }
+        #skillTabs {
+            overflow: auto !important;
+        }
+        #otherSkill {
+            margin: 10px;
+            float: none !important;
+            ;
+        }
+        #alertaSkill {
+            display: block !important;
+        }
+    }
+    
+    @media only screen and (max-device-width: 768px) {
+        #logoProyecto {
+            display: none;
+        }
+        #skillTabs {
+            overflow: auto !important;
+        }
+        #otherSkill {
+            float: none !important;
+            ;
+        }
+        #alertaSkill {
+            display: block !important;
+        }
+    }
