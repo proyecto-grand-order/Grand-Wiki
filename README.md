@@ -7,7 +7,7 @@ Este proyecto ha sido llevado gracias ha [Atlas Academy](https://github.com/atla
 Esto es una modificacion / insiparcion del proyecto - [aa-db de Atlas Academy](https://github.com/atlasacademy/aa-db/) llevada de otra forma usando handlerbars advierto esto es el primer proyecto que llevo acabo pero aun le falta cosillas ya que es algo amateur.
 
 ## ¿Que funciones planeas a futuro?
-[X] Una aplicacion web
+[ X ] Una aplicacion web
 [ ] Una aplicacion para moviles
 [ ] Añadir fandub de los nobles phantams
 [ ] Añadir la seccion lore
