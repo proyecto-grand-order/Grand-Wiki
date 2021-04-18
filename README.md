@@ -1,4 +1,4 @@
-<img src="https://media.discordapp.net/attachments/722063704882937868/825544321692467240/1616895427942.png?width=756&height=425" style="text-align: center">
+<img src="https://media.discordapp.net/attachments/722063704882937868/825544321692467240/1616895427942.png?width=756&height=425" width="400px">
 
 # Proyecto Grand Order / Grand Wiki
 Este proyecto ha sido llevado gracias ha [Atlas Academy](https://github.com/atlasacademy/), este proyecto consiste en traducir las **Habilidades**, **Lore**, **Texto**, y otras funciones del juego.
