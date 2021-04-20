@@ -1,9 +1,0 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ImagesMapCardText = void 0;
-exports.ImagesMapCardText = new Map()
-    .set('buster', "https://apps.atlasacademy.io/db/assets/card_txt_buster.png")
-    .set('quick', "https://apps.atlasacademy.io/db/assets/card_icon_quick.png")
-    .set('arts', "https://apps.atlasacademy.io/db/assets/card_txt_arts.png")
-    .set('extra', "https://apps.atlasacademy.io/db/assets/card_txt_extra.png");
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSW1hZ2VzTWFwcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy9hcGlzL2F0bGFzL0JyZWFrZG93bnMvSW1hZ2VzTWFwcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBYSxRQUFBLGlCQUFpQixHQUFHLElBQUksR0FBRyxFQUFFO0tBQ3pDLEdBQUcsQ0FBQyxRQUFRLEVBQUUsNERBQTRELENBQUM7S0FDM0UsR0FBRyxDQUFDLE9BQU8sRUFBRSw0REFBNEQsQ0FBQztLQUMxRSxHQUFHLENBQUMsTUFBTSxFQUFFLDBEQUEwRCxDQUFDO0tBQ3ZFLEdBQUcsQ0FBQyxPQUFPLEVBQUUsMkRBQTJELENBQUMsQ0FBQSIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjb25zdCBJbWFnZXNNYXBDYXJkVGV4dCA9IG5ldyBNYXAoKVxuLnNldCgnYnVzdGVyJywgXCJodHRwczovL2FwcHMuYXRsYXNhY2FkZW15LmlvL2RiL2Fzc2V0cy9jYXJkX3R4dF9idXN0ZXIucG5nXCIpXG4uc2V0KCdxdWljaycsIFwiaHR0cHM6Ly9hcHBzLmF0bGFzYWNhZGVteS5pby9kYi9hc3NldHMvY2FyZF9pY29uX3F1aWNrLnBuZ1wiKVxuLnNldCgnYXJ0cycsIFwiaHR0cHM6Ly9hcHBzLmF0bGFzYWNhZGVteS5pby9kYi9hc3NldHMvY2FyZF90eHRfYXJ0cy5wbmdcIilcbi5zZXQoJ2V4dHJhJywgXCJodHRwczovL2FwcHMuYXRsYXNhY2FkZW15LmlvL2RiL2Fzc2V0cy9jYXJkX3R4dF9leHRyYS5wbmdcIikiXX0=
