@@ -23,7 +23,6 @@ Thumbs.db
 /node_modules
 
 # Src
-/src
 
 # Coveralls
 coverage
