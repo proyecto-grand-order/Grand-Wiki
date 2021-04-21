@@ -1,13 +1,13 @@
 <div>
     {{#each stats.decks.card}}
         <span class="command-card" style="height: 60px;">
-        <img alt="" class="command-card-ratio"
+        <img loading="lazy" alt="" class="command-card-ratio"
             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <img alt="" class="command-card-bg" src="https://apps.atlasacademy.io/db/assets/card_bg_{{this.card}}.png">
-        <img alt="" class="command-card-portrait"
+        <img loading="lazy" alt="" class="command-card-bg" src="https://apps.atlasacademy.io/db/assets/card_bg_{{this.card}}.png">
+        <img loading="lazy" alt="" class="command-card-portrait"
             src="{{this.face}}">
-        <img alt="" class="command-card-icon" src="https://apps.atlasacademy.io/db/assets/card_icon_{{this.card}}.png">
-        <img class="command-card-text-card" alt="" src="https://apps.atlasacademy.io/db/assets/card_txt_{{this.card}}.png">
+        <img loading="lazy" alt="" class="command-card-icon" src="https://apps.atlasacademy.io/db/assets/card_icon_{{this.card}}.png">
+        <img loading="lazy" class="command-card-text-card" alt="" src="https://apps.atlasacademy.io/db/assets/card_txt_{{this.card}}.png">
     </span>
     {{/each}}
 </div>

@@ -36,7 +36,7 @@ export default class List {
         } else {
             var head = {
                 className: servant.className,
-                img: `<img id="HeadTable" src="${servant.extraAssets.commands.ascension["1"]}" alt="${servant.className}">`
+                img: `<img loading="lazy" id="HeadTable" src="${servant.extraAssets.commands.ascension["1"]}" alt="${servant.className}">`
             }
         }
     

@@ -1,23 +1,23 @@
 import { Router, Application } from "express";
-import { NoblePhantasm, Servant } from "@isaaczm/api-connector";
+import { Servant } from "@isaaczm/api-connector";
 import * as helper from '../../helpers/service/index';
 import chalk from "chalk";
 import date from 'date-and-time';
 import {SkillReturn} from "./servant.controller";
-import NoblePhantasmPage from "../../../apis/atlas/Pages/NoblePhantasm";
+import PreloadImageToBase64 from "./servant.preloadImage";
+import servantPreloadImage from "./servant.preloadImage";
 
 const now = new Date();
 export default class Servants {
     private app: Application;
     private router: Router;
 
-    constructor(app: Application, name: string, servant: Servant.Servant, skill: SkillReturn[], nps: string[], npsName: string[]) {
+    constructor(app: Application, name: string, servant: Servant.Servant, skill: SkillReturn[], nps: string[], npsName: string[], ascensionsEncoded: string[]) {
         this.app = app
         this.router = Router()
 
         this.app.use(this.router)
 
-        var ascensiones = [...Object.values(servant.extraAssets.charaGraph.ascension)];
         const decks = servant.cards.map(text => {
             return {
                 card: text.toLowerCase(),
@@ -25,14 +25,11 @@ export default class Servants {
             }
         })
 
-        if (servant.extraAssets.charaGraph.costume) {
-            ascensiones.push(...Object.values(servant.extraAssets.charaGraph.costume))
-        }
-        
+
         try {
             this.router.get(`/servant/${name}`, async (req, res) => {
                 res.render('servant', {
-                    ascension: ascensiones,
+                    ascension: ascensionsEncoded,
                     servant: servant,
                     rarity: '★'.repeat(servant.rarity),
                     classIcon: helper.ClassIconList.get(servant.className.toLowerCase()),

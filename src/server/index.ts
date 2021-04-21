@@ -3,8 +3,7 @@ import cors from 'cors';
 import Home from "./routes/home/home.route";
 import { createServer } from "http";
 import { settings } from "./settings/index";
-import fetch from "node-fetch";
-import { NoblePhantasm, Servant } from "@isaaczm/api-connector";
+import { Servant } from "@isaaczm/api-connector";
 import Servants from "./routes/servants/servant.route";
 import exphbs from 'express-handlebars';
 import Repeat from "./helpers/repeat";
@@ -16,12 +15,12 @@ import morgan from "morgan";
 import SkillController, { SkillReturn } from "./routes/servants/servant.controller";
 import TranslateModule from "./routes/servants/servant.translate";
 import TraitDescription from "../apis/atlas/Descriptor/TraitDescription";
-import _ from "lodash";
 import NoblePhantasmPage from "../apis/atlas/Pages/NoblePhantasm";
 import ip from 'ip';
 import { MapNpTranslate } from "../apis/atlas/Descriptor/NpTranslate";
 import ApiMerged from "./index.servant.api";
 import List from "./routes/list/list.route";
+import ServantPreloadAscension from "./routes/servants/servant.preloadImage";
 
 export default class Servidor {
     protected server: Application;
@@ -79,6 +78,18 @@ export default class Servidor {
         return cache
     }
 
+    private async preloadImagesAscensions(servant: Servant.Servant): Promise<string[]> {
+        var ascensiones = [...Object.values(servant.extraAssets.charaGraph.ascension)];
+        
+        if (servant.extraAssets.charaGraph.costume) {
+            ascensiones.push(...Object.values(servant.extraAssets.charaGraph.costume))
+        }
+        
+        var images = await ServantPreloadAscension(ascensiones, '★'.repeat(servant.rarity))
+        
+        return images
+    }
+
     public async init(): Promise<void> {
 
         this.server = express()
@@ -118,8 +129,9 @@ export default class Servidor {
             const npsName = this.TranslateNP(svt)
             
             const skills: SkillReturn[] = await this.loadSkills(svt)
+            const encodedImages: string[] = await this.preloadImagesAscensions(svt)
             
-            new Servants(this.server, String(svt.collectionNo), svt, skills, nps, npsName)
+            new Servants(this.server, String(svt.collectionNo), svt, skills, nps, npsName, encodedImages)
         }
 
 

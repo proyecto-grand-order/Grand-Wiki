@@ -25,7 +25,7 @@ export default class PathServant {
     $("#ServantSearch").on("keyup", function () {
       var value = $(this).val().toLowerCase();
       $("#ServantList tr").filter(function () {
-        for (id of ClasesID) $("#clase-" + id).css("filter", "grayscale(1)");
+        for (var id of ClasesID) $("#clase-" + id).css("filter", "grayscale(1)");
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
       });
     });

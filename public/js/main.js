@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "loop",
       pagination: false,
       lazyLoad: "nearby",
-      preloadPages: true,
       start: 1,
     }).mount();
   }
