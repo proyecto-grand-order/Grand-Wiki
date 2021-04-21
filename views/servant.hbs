@@ -13,8 +13,8 @@
     const ImagesDataToArray = ImagesDataToString.split(',');
     var isLoaded = false;
 
-    window.onload = preloadImages(ImagesDataToArray, async () => {
+    window.onload = setTimeout(() => {
         $('#preload').fadeOut(1000)
         $('#page').fadeIn(2000)
-    })
+    }, 500)
 </script>
