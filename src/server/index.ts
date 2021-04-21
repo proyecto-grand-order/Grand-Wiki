@@ -20,7 +20,6 @@ import ip from 'ip';
 import { MapNpTranslate } from "../apis/atlas/Descriptor/NpTranslate";
 import ApiMerged from "./index.servant.api";
 import List from "./routes/list/list.route";
-import ServantPreloadAscension from "./routes/servants/servant.preloadImage";
 
 export default class Servidor {
     protected server: Application;
@@ -78,18 +77,6 @@ export default class Servidor {
         return cache
     }
 
-    private async preloadImagesAscensions(servant: Servant.Servant): Promise<string[]> {
-        var ascensiones = [...Object.values(servant.extraAssets.charaGraph.ascension)];
-        
-        if (servant.extraAssets.charaGraph.costume) {
-            ascensiones.push(...Object.values(servant.extraAssets.charaGraph.costume))
-        }
-        
-        var images = await ServantPreloadAscension(ascensiones, '★'.repeat(servant.rarity))
-        
-        return images
-    }
-
     public async init(): Promise<void> {
 
         this.server = express()
@@ -128,10 +115,8 @@ export default class Servidor {
             }))
             const npsName = this.TranslateNP(svt)
             
-            const skills: SkillReturn[] = await this.loadSkills(svt)
-            const encodedImages: string[] = await this.preloadImagesAscensions(svt)
-            
-            new Servants(this.server, String(svt.collectionNo), svt, skills, nps, npsName, encodedImages)
+            const skills: SkillReturn[] = await this.loadSkills(svt)            
+            new Servants(this.server, String(svt.collectionNo), svt, skills, nps, npsName)
         }
 
 

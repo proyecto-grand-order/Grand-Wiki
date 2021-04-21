@@ -4,20 +4,24 @@ import * as helper from '../../helpers/service/index';
 import chalk from "chalk";
 import date from 'date-and-time';
 import {SkillReturn} from "./servant.controller";
-import PreloadImageToBase64 from "./servant.preloadImage";
-import servantPreloadImage from "./servant.preloadImage";
 
 const now = new Date();
 export default class Servants {
     private app: Application;
     private router: Router;
 
-    constructor(app: Application, name: string, servant: Servant.Servant, skill: SkillReturn[], nps: string[], npsName: string[], ascensionsEncoded: string[]) {
+    constructor(app: Application, name: string, servant: Servant.Servant, skill: SkillReturn[], nps: string[], npsName: string[]) {
         this.app = app
         this.router = Router()
 
         this.app.use(this.router)
-
+        
+        var ascensiones = [...Object.values(servant.extraAssets.charaGraph.ascension)];
+        
+        if (servant.extraAssets.charaGraph.costume) {
+            ascensiones.push(...Object.values(servant.extraAssets.charaGraph.costume))
+        }
+        
         const decks = servant.cards.map(text => {
             return {
                 card: text.toLowerCase(),
@@ -29,7 +33,7 @@ export default class Servants {
         try {
             this.router.get(`/servant/${name}`, async (req, res) => {
                 res.render('servant', {
-                    ascension: ascensionsEncoded,
+                    ascension: ascensiones,
                     servant: servant,
                     rarity: '★'.repeat(servant.rarity),
                     classIcon: helper.ClassIconList.get(servant.className.toLowerCase()),
