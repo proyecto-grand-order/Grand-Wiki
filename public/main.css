@@ -2,7 +2,7 @@
         position: absolute;
         z-index: 1;
         top: 50%;
-        content: url(https://apps.atlasacademy.io/db/assets/img_arrow_load.png);
+        content: url(./images/arrow.png);
         width: 2em;
         height: 2em;
         display: flex;
@@ -234,12 +234,12 @@
     }
     
     .lb-nav a.lb-next {
-        background: url(https://apps.atlasacademy.io/db/assets/img_arrow_load.png) right 48% no-repeat;
+        background: url(./images/arrow.png) right 48% no-repeat;
         background-size: 50px 50px;
     }
     
     .lb-nav a.lb-prev {
-        background: url(https://apps.atlasacademy.io/db/assets/img_arrow_load.png) left 48% no-repeat;
+        background: url(./images/arrow.png) left 48% no-repeat;
         background-size: 50px 50px;
         transform: rotate( 180deg);
         background-position: 100%;

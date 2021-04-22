@@ -20,6 +20,7 @@ import ip from 'ip';
 import { MapNpTranslate } from "../apis/atlas/Descriptor/NpTranslate";
 import ApiMerged from "./index.servant.api";
 import List from "./routes/list/list.route";
+import compression from "compression";
 
 export default class Servidor {
     protected server: Application;
@@ -87,7 +88,6 @@ export default class Servidor {
             credentials: false
         }))
         this.server.use(express.static("public"));
-        
 
         // Out process
         new outProcess()
