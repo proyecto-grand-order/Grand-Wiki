@@ -1,11 +1,9 @@
 import { Region, Servant, Skill } from "@isaaczm/api-connector";
 import FuncDescriptor from "../../../apis/atlas/Descriptor/FuncDescriptor";
-import FuncValueDescriptor from "../../../apis/atlas/Descriptor/FuncValueDescriptor";
 import QuestDescriptor from "../../../apis/atlas/Descriptor/QuestDescriptor";
 import {MapSkillTranslated} from "../../../apis/atlas/Descriptor/SkillTranslate";
 import { describeMutators, getRelatedSkillIds } from "../../../apis/atlas/Helper/FuncHelper";
 import SkillDescReference from "../../../apis/atlas/Reference/Skill";
-import SkillLines from "../../../apis/atlas/Templates/Skill.controller";
 import SkillModule from "../../../apis/atlas/Templates/Skills";
 
 export interface SkillReturn {

@@ -1,4 +1,5 @@
-import PathServant from './paths/servants.js'
+import PathServant from './paths/servants.js';
+import navbar from "./service/navbar.js"
 
 if (window.location.pathname === "/servants") {
   new PathServant(window.location.pathname, 90)
@@ -6,6 +7,7 @@ if (window.location.pathname === "/servants") {
 
 // Others function
 document.addEventListener("DOMContentLoaded", function () {
+  navbar.mobile()
   var elems2 = document.querySelectorAll(".splide");
 
   if (elems2.length > 0) {
@@ -50,6 +52,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (tabs[1]) var instance = M.Tabs.init(tabs[1], {}); // Skills
     if (tabs[2]) var instance = M.Tabs.init(tabs[2], {}); // Np
+
+    /**
+     * Noble Phantams Tabs [Efectos, Efectos ocultos]
+     * Rango: 3 a 8
+     */
+
+    for (var x = 3; x < 8; x++) {
+      if(tabs[x]) {
+        M.Tabs.init(tabs[x], {}); 
+      } else {
+        continue;
+      }
+    }
+
+
   }
 });
 

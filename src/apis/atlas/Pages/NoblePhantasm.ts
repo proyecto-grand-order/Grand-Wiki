@@ -1,15 +1,19 @@
-import { NoblePhantasm, Region, Servant } from "@isaaczm/api-connector";
+import { NoblePhantasm, Servant } from "@isaaczm/api-connector";
 import EffectBreakdown from "../Breakdowns/EffectBreakdown";
-import FuncDescriptor from "../Descriptor/FuncDescriptor";
 import { MapNpTranslate } from "../Descriptor/NpTranslate";
-import { describeMutators, getRelatedSkillIds, getTargetVersionValues } from "../Helper/FuncHelper";
 import { asPercent, mergeElements } from "../Helper/OutputHelper";
-import SkillModule from "../Templates/Skills";
+import * as helper from "../../../server/helpers/service/index";
 
 const NPCard = new Map()
     .set('buster', 'https://i.imgur.com/CsTVGPL.png')
     .set('quick', "https://i.imgur.com/LItUZ94.png")
     .set('arts', "https://i.imgur.com/omXXQku.png");
+
+const TextCard = new Map()
+    .set('buster', "/images/np_txt_buster.png")
+    .set('quick', "/images/np_txt_quick.png")
+    .set('arts', "/images/np_txt_arts.png")
+    .set('extra', "/images/np_txt_extra.png")
 
 export default class NoblePhantasmPage {
     protected np: NoblePhantasm.NoblePhantasm;
@@ -24,21 +28,43 @@ export default class NoblePhantasmPage {
         this.servant = servant
     }
 
-    private CommandCard(str: string, height?: string) {
+    private CommandCard(str: string, gain?: boolean, height?: string) {
         if (height) {
-            return `<img src="${NPCard.get(str)}" style="height:${height}">`
+            if(gain) {
+                return `<img src="${TextCard.get(str)}" style="height:${height}">`
+            } else {
+                return `<img src="${NPCard.get(str)}" style="height:${height}">`
+            }
         } else {
-            return `<img src="${NPCard.get(str)}">`
+            if(gain) {
+                return `<img src="${TextCard.get(str)}">`
+            } else {
+                return `<img src="${NPCard.get(str)}">`
+            }
         }
     }
 
     private TranslateNP() {
         if (MapNpTranslate.has(this.np.id)) {
             const NpTralated = MapNpTranslate.get(this.np.id);
-            console.log(NpTralated)
             return {
                 name: NpTralated.name,
-                detail: NpTralated.detail.replace(/%s/g, "<b>⎡La sobrecarga aumenta este efecto⎦</b>")
+                detail: NpTralated.detail
+                    .replace(/%s/g, "<b>⎡La sobrecarga aumenta este efecto⎦</b>")
+                    .replace(/%m/g, "▲")
+                    .replace(/%saber/g, `<img src="${helper.ClassIconList.get('saber')}" height="24px">`)
+                    .replace(/%shielder/g, `<img src="${helper.ClassIconList.get('shielder')}" height="24px">`)
+                    .replace(/%archer/g, `<img src="${helper.ClassIconList.get('archer')}" height="24px">`)
+                    .replace(/%lancer/g, `<img src="${helper.ClassIconList.get('lancer')}" height="24px">`)
+                    .replace(/%rider/g, `<img src="${helper.ClassIconList.get('rider')}" height="24px">`)
+                    .replace(/%caster/g, `<img src="${helper.ClassIconList.get('caster')}" height="24px">`)
+                    .replace(/%berserker/g, `<img src="${helper.ClassIconList.get('berserker')}" height="24px">`)
+                    .replace(/%ruler/g, `<img src="${helper.ClassIconList.get('ruler')}" height="24px">`)
+                    .replace(/%avenger/g, `<img src="${helper.ClassIconList.get('avenger')}" height="24px">`)
+                    .replace(/%moon/g, `<img src="${helper.ClassIconList.get('mooncancer')}" height="24px">`)
+                    .replace(/%alter/g, `<img src="${helper.ClassIconList.get('alterego')}" height="24px">`)
+                    .replace(/%beast/g, `<img src="${helper.ClassIconList.get('beast')}" height="24px">`)
+                    .replace(/%foreigner/g, `<img src="${helper.ClassIconList.get('foreigner')}" height="24px">`)
             }
         } else {
             return {
@@ -71,17 +97,62 @@ export default class NoblePhantasmPage {
                 </p>
                 </div>
             </div>
-            <table class="responsive-table">
+            
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3"><a href="#efectos-${this.np.id}">Efectos</a></li>
+                        <li class="tab col s3"><a href="#efectos:ocultos-${this.np.id}">Efectos Ocultos</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="efectos-${this.np.id}">
+                <table class="responsive-table">
+                    <thead>
+                        <th>Efectos</th>
+                        ${this.level ? Array.from(Array(this.level).keys()).map(level => {
+                            return `<td>Lv.${level + 1}</td>`
+                        }).join(' ') : ""}
+                    </thead>
+                    <tbody>
+                        ${func.replace(/,/g, ' ')}
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="efectos:ocultos-${this.np.id}">
+                
+
+                <table class="responsive-table">
+                
                 <thead>
                     <th>Efectos</th>
                     ${this.level ? Array.from(Array(this.level).keys()).map(level => {
-            return `<td>Lv.${level + 1}</td>`
-        }).join(' ') : ""}
+                        return `<td>Lv.${level + 1}</td>`
+                    }).join(' ') : ""}
                 </thead>
                 <tbody>
-                    ${func.replace(/,/g, ' ')}
+
+                <td>Ganancia de NP</td>
+                    ${[...Array(this.level)].map((_, key) => {
+                        return `
+                        <td>
+                            ${asPercent(this.np.npGain?.buster[key], 2)}${this.CommandCard('buster', true, '15px')}<br/>
+                            ${asPercent(this.np.npGain?.arts[key], 2)} ${this.CommandCard('arts', true, '15px')}<br/>
+                            ${asPercent(this.np.npGain?.quick[key], 2)} ${this.CommandCard('quick', true, '15px')}<br/>
+                            ${asPercent(this.np.npGain?.extra[key], 2)} ${this.CommandCard('extra', true, '15px')}<br/>
+                            ${asPercent(this.np.npGain?.np[key], 2)} NP<br/>
+                            ${asPercent(this.np.npGain?.defence[key], 2)} Def
+                        </td>
+                        `
+                    }).join(" ")}
                 </tbody>
-            </table>
+
+                </table>
+                
+            </div>
+            
         </div>
         `
     }

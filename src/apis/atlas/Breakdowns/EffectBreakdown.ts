@@ -72,22 +72,6 @@ export default class EffectBreakdown {
         
         ${this.scripts ? '' : ''}
 
-        ${this.gain ? `
-            <td>Ganancia de NP</td>
-            ${[...Array(this.levels)].map((_, key) => {
-                return `
-                <td>
-                    ${asPercent(this.gain?.buster[key], 2)}${this.CommandCard('buster', '15px')}<br/>
-                    ${asPercent(this.gain?.arts[key], 2)} ${this.CommandCard('arts', '15px')}<br/>
-                    ${asPercent(this.gain?.quick[key], 2)} ${this.CommandCard('quick', '15px')}<br/>
-                    ${asPercent(this.gain?.extra[key], 2)} ${this.CommandCard('extra', '15px')}<br/>
-                    ${asPercent(this.gain?.np[key], 2)} NP<br/>
-                    ${asPercent(this.gain?.defence[key], 2)} Def
-                </td>
-                `
-            })}
-        ` : ''}
-        
         ${await Promise.all(await this.Func())}
         `
     }
